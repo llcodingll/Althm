@@ -9,10 +9,10 @@ public class BOJ_2741 {
 		int N = Integer.parseInt(br.readLine());
 		br.close();
         
-		int i = 1;
-		while(i<= N) {
-			System.out.println(i);
-			i++;
+		int a = 1;
+		while(a<= N) {
+			System.out.println(a);
+			a++;
 		}	
 	}
 }
