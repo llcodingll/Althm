@@ -7,10 +7,11 @@ public class twoDimensionBomb {
         for(int i = 0; i < grid[0].length; i++) {
             int count = 1;
             for(int j = 0; j < grid.length; j++){
-                if (j < grid.length-1 && grid[j][i] == grid[j+1][i] && grid[j][i] != 0) {
+                if (j < grid.length-1 && grid[j][i] != 0 && grid[j][i] == grid[j+1][i]) {
                     count++;
-                } else {
-                    if (count >= m) {
+                } 
+                else {
+                    if(grid[j][i] != 0 && count >= m){
                         for (int k = 0; k < count; k++) {
                             grid[j-k][i] = 0; // 터진 폭탄 표시
                         }
@@ -51,11 +52,14 @@ public class twoDimensionBomb {
         }
     }
 
+    /* 모든 폭탄이 다 터졌는지 체크하는 메서드 */
+
     public static void main(String[] args) {
-        /* 입력값 받기 */
+        // 입력값 받기
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
+        int k = sc.nextInt();
         int[][] grid = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -63,13 +67,23 @@ public class twoDimensionBomb {
             }
         }
 
-        boolean isBang;
-        do {
-            isBang = bang(grid, m);
-            if (isBang) {
+        // k번 만큼 회전 반복
+        for(int i = 0; i<k; i++){
+            while(bang(grid, m)){
+                if(n>1){
+                    fallDown(grid);
+                }
+            }
+            rotate(grid);
+            if(n>1){
                 fallDown(grid);
             }
-        } while (isBang);
+        }
+
+        // 회전 이후 남은 폭탄 터트리기
+        while(bang(grid, m)){
+            fallDown(grid);
+        }
 
         // 최종 결과 계산
         int bombCount = 0;
