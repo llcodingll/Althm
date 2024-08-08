@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class snakeLoveApple {
+public class Main {
     /* 뱀의 이동 방향 관련 변수 */
     static int[] dirX = {-1, 1, 0, 0}; //U D R L
     static int[] dirY = {0, 0, 1, -1}; //U D R L
@@ -16,30 +16,26 @@ public class snakeLoveApple {
     /* 걸린 시간 */
     static int count = 0;
 
-    /* 사과 순서 세기 */
-    static int appleCount = 0;
-
     /* 뱀이 1칸 움직이는 메서드 */
-    public static boolean move(int[][] grid, int appleX, int appleY, int dir){
+    public static boolean move(int[][] grid, int dir){
         boolean stop =false; // 뱀이 이동할 수 없는 상황이 되면 true
 
         int nextHeadX = headX + dirX[dir];
         int nextHeadY = headY + dirY[dir];
 
+        int tailDir = (grid[tailX][tailY] < 1 || grid[tailX][tailY] > 4) ? dir : grid[tailX][tailY]-1;
+        int nextTailX = tailX + dirX[tailDir];
+        int nextTailY = tailY + dirY[tailDir];
+        
         // 머리가 격자 밖으로 벗어난 경우
         if(nextHeadX<0 || nextHeadX>grid.length-1 || nextHeadY<0 || nextHeadY>grid.length-1){
             count++;
             stop = true;
         }
-        // 머리가 몸과 닿은 경우
-        else if(grid[nextHeadX][nextHeadY]>=1){
-            count++;
-            stop = true;
-        }
+
         // 머리가 사과와 닿은 경우
-        else if(nextHeadX==appleX && nextHeadY==appleY){
+        else if(grid[nextHeadX][nextHeadY]==-1){
             count++;
-            appleCount++;
             grid[nextHeadX][nextHeadY] = 5;
             switch(dir){
                 case 0: //UP
@@ -58,49 +54,45 @@ public class snakeLoveApple {
             headX = nextHeadX;
             headY = nextHeadY;
         }
+
         // 그냥 이동하는 경우
         else{
             count++;
-            grid[nextHeadX][nextHeadY] = 5;
-            switch(dir){
-                case 0: //UP
-                    grid[headX][headY] = 1;
-                    break;
-                case 1: //DOWN
-                    grid[headX][headY] = 2;
-                    break;
-                case 2: //RIGHT
-                    grid[headX][headY] = 3;
-                    break;
-                case 3: //LEFT
-                    grid[headX][headY] = 4;
-                    break;
+
+            // 꼬리 먼저 이동시킴
+            grid[tailX][tailY] = 0;
+
+            // 머리가 몸과 닿은 경우
+            if(grid[nextHeadX][nextHeadY]>=1){
+                stop = true;
             }
-            headX = nextHeadX;
-            headY = nextHeadY;
-            switch(grid[tailX][tailY]-1){
-                case 0: //UP
-                    grid[tailX][tailY] = 0;
-                    tailX += dirX[0];
-                    tailY += dirY[0];
-                    break;
-                case 1: //DOWN
-                    grid[tailX][tailY] = 0;
-                    tailX += dirX[1];
-                    tailY += dirY[1];
-                    break;
-                case 2: //RIGHT
-                    grid[tailX][tailY] = 0;
-                    tailX += dirX[2];
-                    tailY += dirY[2];
-                    break;
-                case 3: //LEFT
-                    grid[tailX][tailY] = 0;
-                    tailX += dirX[3];
-                    tailY += dirY[3];
-                    break;
+            else{
+                grid[nextHeadX][nextHeadY] = 5;
+                switch(dir){
+                    case 0: //UP
+                        grid[headX][headY] = 1;
+                        break;
+                    case 1: //DOWN
+                        grid[headX][headY] = 2;
+                        break;
+                    case 2: //RIGHT
+                        grid[headX][headY] = 3;
+                        break;
+                    case 3: //LEFT
+                        grid[headX][headY] = 4;
+                        break;
+                }
+                headX = nextHeadX;
+                headY = nextHeadY;
+                grid[tailX][tailY] = 0;
+                tailX = nextTailX;
+                tailY = nextTailY;
             }
         }
+        
+        
+        
+
         return stop;
     }
 
@@ -109,16 +101,17 @@ public class snakeLoveApple {
         Scanner sc = new Scanner(System.in);
         
         int n = sc.nextInt();
-        int[][] grid = new int[n][n]; // 뱀 머리 : 5, 뱀 몸 : 1(U) 2(D) 3(R) 4(L) (방향)
+        int[][] grid = new int[n][n]; // 뱀 머리 : 5, 뱀 몸 : 1(U) 2(D) 3(R) 4(L) (방향), 사과 : -1
         int m = sc.nextInt();
         int k = sc.nextInt();
         
         // 사과 위치 관련
-        int [] appleX = new int[m];
-        int [] appleY = new int[m]; 
+        int appleX = 0;
+        int appleY = 0; 
         for(int i = 0; i<m; i++){
-            appleX[i] = sc.nextInt()-1; // x좌표
-            appleY[i] = sc.nextInt()-1; // y좌표
+            appleX = sc.nextInt()-1; // x좌표
+            appleY = sc.nextInt()-1; // y좌표
+            grid[appleX][appleY] = -1;
         }
 
         // 뱀 이동 관련
@@ -149,19 +142,24 @@ public class snakeLoveApple {
                 break;
             }
             else{
-                if(appleCount<m){
-                    for(int j = 0; j<dx[i]; j++){
-                        stop = move(grid, appleX[appleCount], appleY[appleCount], dir[i]);
-                    }
-                }
-                else{
-                    for(int j = 0; j<dx[i]; j++){
-                        stop = move(grid, -1, -1, dir[i]);
+                for(int j = 0; j<dx[i]; j++){
+                    stop = move(grid, dir[i]);
+                    if(stop){
+                        break;
                     }
                 }
             }
+            /*
+            System.out.println("dir : "+dir[i]+", dx : "+dx[i]);
+            for(int r = 0; r<grid.length; r++){
+                for(int c = 0; c<grid[0].length; c++){
+                    System.out.print(grid[r][c]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println();
+            */
         }
-
         System.out.print(count);
     }
 }
