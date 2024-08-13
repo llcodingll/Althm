@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "BOJ_10950",
+            "request": "launch",
+            "mainClass": "BOJ_10950",
+            "projectName": "Althm_d6b9e73"
+        },
+        {
             "name": "Java",
             "type": "java",
             "request": "launch",
