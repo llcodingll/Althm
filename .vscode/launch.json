@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "EvenSum",
+            "request": "launch",
+            "mainClass": "EvenSum",
+            "projectName": "Althm_d6b9e73"
+        },
+        {
+            "type": "java",
             "name": "DayCount",
             "request": "launch",
             "mainClass": "DayCount",
