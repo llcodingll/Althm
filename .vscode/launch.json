@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DayCount",
+            "request": "launch",
+            "mainClass": "DayCount",
+            "projectName": "Althm_d6b9e73"
+        },
+        {
+            "type": "java",
             "name": "BOJ_10950",
             "request": "launch",
             "mainClass": "BOJ_10950",
