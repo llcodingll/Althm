@@ -12,7 +12,6 @@ public class EvenSum {
         for(int i = 1; i <= num; i++){
             if(i % 2 == 0) {
                 sum += i;
-                System.out.println("더한 값: "+sum);
             }
         }
 
