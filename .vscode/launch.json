@@ -6,6 +6,41 @@
   "configurations": [
     {
       "type": "java",
+      "name": "AppleTree",
+      "request": "launch",
+      "mainClass": "AppleTree",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
+      "name": "Direction",
+      "request": "launch",
+      "mainClass": "Direction",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
+      "name": "ArrayTest_P",
+      "request": "launch",
+      "mainClass": "ArrayTest_P",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
+      "name": "LoopAndArray",
+      "request": "launch",
+      "mainClass": "LoopAndArray",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
+      "name": "Operators",
+      "request": "launch",
+      "mainClass": "Operators",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
       "name": "Season2_while",
       "request": "launch",
       "mainClass": "Season2_while",
