@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ArrayTest_P",
+      "request": "launch",
+      "mainClass": "ArrayTest_P",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
       "name": "LoopAndArray",
       "request": "launch",
       "mainClass": "LoopAndArray",
