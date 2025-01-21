@@ -151,14 +151,14 @@ public class Operators {
 		
 		// Q. value7의 값과 value8의 값을 생각해 봅시다.
 		System.out.println( (value7 += 10) > 15 | (value8 -= 10) > 15 );
-		System.out.println("예측: value7은 ____ 이고, value8은 ____입니다.");
+		System.out.println("예측: value7은 20 이고, value8은 10 입니다.");
 		System.out.println("정답: value7은 " + value7 + "이고, value8은 " + value8);
 		
 		// Q. value7의 값과 value8의 값을 생각해 봅시다.
 		value7 = 10;
 		value8 = 20;
 		System.out.println( (value7 += 10) > 15 || (value8 -= 10) > 15 );
-		System.out.println("예측: value7은 ____ 이고, value8은 ____입니다.");
+		System.out.println("예측: value7은 20 이고, value8은 20 입니다.");
 		System.out.println("정답: value7은 " + value7 + "이고, value8은 " + value8);
 	}
 }

@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "LoopAndArray",
+      "request": "launch",
+      "mainClass": "LoopAndArray",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
       "name": "Operators",
       "request": "launch",
       "mainClass": "Operators",
@@ -54,7 +61,10 @@
       "jdkPath": "${env:JAVA_HOME}/bin",
       "cwd": "${fileDirname}",
       "startupClass": "${fileBasenameNoExtension}",
-      "classpath": [".", "${fileDirname}"]
+      "classpath": [
+        ".",
+        "${fileDirname}"
+      ]
     },
     {
       "name": "Java Console App",
@@ -64,7 +74,10 @@
       "jdkPath": "${env:JAVA_HOME}/bin",
       "cwd": "${fileDirname}",
       "startupClass": "${fileBasenameNoExtension}",
-      "classpath": [".", "${fileDirname}"],
+      "classpath": [
+        ".",
+        "${fileDirname}"
+      ],
       "externalConsole": true
     },
     {
