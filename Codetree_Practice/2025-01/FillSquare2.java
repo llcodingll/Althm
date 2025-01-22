@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class FillSqueare2 {
+public class FillSquare2 {
     static int n;
     static int[] memo;
 
