@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class FillSqueare {
+public class FillSquare {
     static int n;
     static int[] memo;
     public static int fillSquare(int num){
