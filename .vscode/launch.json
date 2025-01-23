@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Bridge_P",
+      "request": "launch",
+      "mainClass": "Bridge_P",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
       "name": "AppleTree",
       "request": "launch",
       "mainClass": "AppleTree",
@@ -82,10 +89,7 @@
       "jdkPath": "${env:JAVA_HOME}/bin",
       "cwd": "${fileDirname}",
       "startupClass": "${fileBasenameNoExtension}",
-      "classpath": [
-        ".",
-        "${fileDirname}"
-      ]
+      "classpath": [".", "${fileDirname}"]
     },
     {
       "name": "Java Console App",
@@ -95,10 +99,7 @@
       "jdkPath": "${env:JAVA_HOME}/bin",
       "cwd": "${fileDirname}",
       "startupClass": "${fileBasenameNoExtension}",
-      "classpath": [
-        ".",
-        "${fileDirname}"
-      ],
+      "classpath": [".", "${fileDirname}"],
       "externalConsole": true
     },
     {
