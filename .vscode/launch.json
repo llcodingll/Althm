@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BOJ_31405",
+      "request": "launch",
+      "mainClass": "BOJ_31405",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
       "name": "SiderWeb",
       "request": "launch",
       "mainClass": "SiderWeb",
