@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BOJ_10818",
+      "request": "launch",
+      "mainClass": "BOJ_10818",
+      "projectName": "Althm_d6b9e73"
+    },
+    {
+      "type": "java",
       "name": "BOJ_2562",
       "request": "launch",
       "mainClass": "BOJ_2562",
