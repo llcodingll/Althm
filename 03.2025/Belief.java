@@ -3,7 +3,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class 신뢰 {
+public class Belief {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(input);
