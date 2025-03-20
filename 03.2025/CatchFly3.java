@@ -1,16 +1,18 @@
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class CatchFly3 {
+
     static int N, M;
     static int[] straightdi = {-1, 1, 0, 0};
     static int[] straightdj = {0, 0, -1, 1};
     static int[] crossdi = {-1, -1, 1, 1};
     static int[] crossdj = {-1, 1, -1, 1};
     static int max, crossmax;
-    
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
@@ -27,13 +29,15 @@ public class CatchFly3 {
                 }
             }
 
+            max = 0;
+            crossmax = 0;
             max = catchFly(fly, straightdi, straightdj, max);
             crossmax = catchFly(fly, crossdi, crossdj, crossmax);
 
-            if(max > crossmax){
-                System.out.println("#"+t+" "+max);
+            if (max > crossmax) {
+                System.out.println("#" + t + " " + max);
             } else {
-                System.out.println("#"+t+" "+crossmax);
+                System.out.println("#" + t + " " + crossmax);
             }
         }
     }
@@ -44,13 +48,14 @@ public class CatchFly3 {
                 int sum = fly[i][j];
                 for (int d = 0; d < 4; d++) {
                     for (int k = 1; k < M; k++) {
-                        int ni = i + di[d]*k;
-                        int nj = j + dj[d]*k;
-                        if(ni >= 0 && ni < N && nj >= 0 && nj < N){
-                            sum+=fly[ni][nj];
+                        int ni = i + di[d] * k;
+                        int nj = j + dj[d] * k;
+                        if (ni >= 0 && ni < N && nj >= 0 && nj < N) {
+                            sum += fly[ni][nj];
                         }
                     }
-                } if(sum > mx){
+                }
+                if (sum > mx) {
                     mx = sum;
                 }
             }
